@@ -9,13 +9,11 @@ import { UsersService } from 'src/app/support/api/users.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UsersService) { }
-  loadingUsers:boolean = true;
+  constructor(private userService: UsersService) { 
+  }
   allUsers: User[];
   ngOnInit(): void {
-   this.getAllUsers();
+    this.userService.allUsers.subscribe(resp=>this.allUsers = resp);
   }
-  getAllUsers(){
-    this.userService.getAllUsers().subscribe(resp=>this.allUsers=resp, error=>error, ()=>this.loadingUsers=false);
-  }
+ 
 }

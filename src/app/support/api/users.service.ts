@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../User';
 
 @Injectable({
@@ -8,7 +8,12 @@ import { User } from '../User';
 })
 export class UsersService {
 
-  constructor(private apiSerivce: JsonplaceholderService) { }
+  constructor(private apiSerivce: JsonplaceholderService) {
+    this.getAllUsers();
+   }
+
+  private allUsersSource = new BehaviorSubject([]);
+  allUsers = this.allUsersSource.asObservable();
 
   getUser(userId: number): Observable<User> {
     return this.apiSerivce.getUser(userId);
@@ -16,7 +21,10 @@ export class UsersService {
   deleteUser(userId:number): Observable<any>{
     return this.apiSerivce.deleteUser(userId);
   }
-  getAllUsers(): Observable<User[]>{
-    return this.apiSerivce.getAllUsers();
+  getAllUsers():void{
+    this.apiSerivce.getAllUsers().subscribe(resp=>this.allUsersSource.next(resp));
+  }
+  updateUser(userId:number, userPropsToUpdate:User): Observable<User>{
+    return this.apiSerivce.updateUser(userId, userPropsToUpdate);
   }
 }

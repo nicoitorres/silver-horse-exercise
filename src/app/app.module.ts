@@ -1,6 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -14,6 +15,8 @@ import { DeleteUserModalComponent } from './components/delete-user-modal/delete-
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserPostsComponent } from './components/user-posts/user-posts.component';
+import { AboutComponent } from './pages/about/about.component';
+import { AddItemModalComponent } from './components/add-item-modal/add-item-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,17 +29,21 @@ import { UserPostsComponent } from './components/user-posts/user-posts.component
     GenericModalComponent,
     DeleteUserModalComponent,
     NavbarComponent,
-    UserPostsComponent
+    UserPostsComponent,
+    AboutComponent,
+    AddItemModalComponent
     
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent],
   entryComponents: [GenericModalComponent]
 })

@@ -2,10 +2,10 @@
     <h3>Welcome to the User-post-album viewing directory</h3>
     <p>Below is a list of active users of the site. Click one to view their profile.</p>
     <div class="mx-auto mt-3 users-container">
-        <div *ngIf="loadingUsers">
+        <div *ngIf="!allUsers">
             <h5>Loading Users<br><i class="fa fa-refresh fa-spin"></i></h5>
         </div>
-        <div *ngIf="!loadingUsers && allUsers">
+        <div *ngIf="allUsers">
             <div *ngFor="let user of allUsers" class="my-2 user-box">
                 <a routerLink="user/{{user.id}}">{{user.name}}</a>
             </div>

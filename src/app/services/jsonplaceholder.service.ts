@@ -22,7 +22,6 @@ export class JsonplaceholderService {
     return this.httpclient.get<User>(`${this.apiUrl}users/${userId}`).
       pipe(catchError(this.handleError<User>(`getUser id=${userId}`)));
   }
-
   deleteUser(userId: number): Observable<any> {
     return this.httpclient.delete(`${this.apiUrl}users/${userId}`).
       pipe(catchError(this.handleError<User>(`deleteUser id=${userId}`)));
@@ -30,6 +29,11 @@ export class JsonplaceholderService {
   getAllUsers(): Observable<User[]>{
     return this.httpclient.get<User[]>(`${this.apiUrl}users`).
     pipe(catchError(this.handleError<User[]>(`getAllUsers`)));
+
+  }
+  updateUser(userId:number, userDto:User):Observable<User>{
+    return this.httpclient.patch<User>(`${this.apiUrl}users/${userId}`, userDto).
+    pipe(catchError(this.handleError<User>(`updateUser id=${userId}`)));
 
   }
   getUserAlbums(userId: number): Observable<Album[]> {

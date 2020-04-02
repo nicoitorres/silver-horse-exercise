@@ -11,8 +11,15 @@
     </div>
     <div class="col-md-4">
 
-        <label for="emailBox">Email</label><input id="emailBox" class="form-control" type="text" value="{{user?.email}}"
-            disabled>
+        <label for="emailBox">Email</label>
+
+        <div class="d-flex"><input id="emailBox" class="form-control" type="text" value="{{user?.email}}"
+                [disabled]="!editEmail || updatingUser" [(ngModel)]="user.email">
+            <i class="ml-2 fa fa-pencil clickable text-warning edit-btn" *ngIf="!updatingUser" (click)="editEmail = true"></i>
+            <i class="ml-2 fa fa-upload clickable text-success edit-btn" *ngIf="editEmail && !updatingUser" (click)="updateUser()"></i>
+
+        </div>
+        <i class="ml-2 fa fa-refresh fa-spin text-info edit-btn" *ngIf="updatingUser"></i>
 
     </div>
 </div>
