@@ -12,7 +12,8 @@ import { MapComponent } from './components/map/map.component';
 import { GenericModalComponent } from './components/generic-modal/generic-modal.component';
 import { DeleteUserModalComponent } from './components/delete-user-modal/delete-user-modal.component';
 import { CommonModule } from '@angular/common';
-import { ErrorComponent } from './pages/error/error.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserPostsComponent } from './components/user-posts/user-posts.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { ErrorComponent } from './pages/error/error.component';
     MapComponent,
     GenericModalComponent,
     DeleteUserModalComponent,
-    ErrorComponent
+    NavbarComponent,
+    UserPostsComponent
+    
   ],
   imports: [
     BrowserModule,

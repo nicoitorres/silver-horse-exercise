@@ -19,6 +19,8 @@ export class UserComponent implements OnInit {
   }
 
   user: User;
+  showPosts: boolean = false;
+  showAlbums: boolean = false;
 
   ngOnInit(): void {
   }

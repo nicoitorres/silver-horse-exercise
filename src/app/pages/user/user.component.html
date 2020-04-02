@@ -30,4 +30,17 @@
             </ul>
         </div>
     </div>
+    <div class="row" style="text-align: center;">
+        <div class="col-md-6 my-3">
+            <h5>Posts by {{user.name}}</h5>
+            <button class="btn-outline-info btn btn-block" *ngIf="!showPosts" (click)="showPosts = true">Load Posts</button>
+            <app-user-posts [userId]="user.id" [type]="'posts'" *ngIf="showPosts"></app-user-posts>
+        </div>
+        <div class="col-md-6 my-3">
+            <h5>Albums by {{user.name}}</h5>
+            <button class="btn-outline-info btn btn-block" *ngIf="!showAlbums" (click)="showAlbums = true">Load Albums</button>
+            <app-user-posts [userId]="user.id" [type]="'albums'" *ngIf="showAlbums"></app-user-posts>
+        </div>
+
+    </div>
 </div>

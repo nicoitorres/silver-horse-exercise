@@ -1,0 +1,20 @@
+<div *ngIf="loading">
+    Loading<br><i class="fa fa-refresh fa-spin"></i>
+</div>
+<div *ngIf="!loading">
+    <div *ngIf="userPosts">
+        <div class="scrollable-container">
+            <div *ngFor="let post of userPosts" class="my-1 item-container">
+                <h5>{{post.title}}</h5>
+                <p>{{post.body}}</p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="userAlbums">
+        <div class="scrollable-container">
+            <div *ngFor="let album of userAlbums" class="my-1 item-container">
+                <h5>{{album.title}}</h5>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,9 +21,7 @@ const routes: Routes = [
     component: NotfoundComponent,
     data: {title: "Not Found"}
   }
-
 ]
-
 @NgModule({
   declarations: [],
   imports: [
