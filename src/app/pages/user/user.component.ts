@@ -25,13 +25,13 @@ export class UserComponent implements OnInit {
 
   async getUser() {
     const user = await this.userService.getUser(parseInt(this.route.snapshot.paramMap.get("userId"))).toPromise();
-    if (user) { this.user = user; }
+    if (user) this.user = user; 
   }
 
 
   deleteUser() {
 
-    const deleteModal = this.modal.open(DeleteUserModalComponent, { windowClass: 'modal-md', backdrop: 'static', keyboard:false });
+    const deleteModal = this.modal.open(DeleteUserModalComponent, { windowClass: 'modal-md', backdrop: 'static', keyboard: false });
     deleteModal.componentInstance.user = this.user;
   }
 

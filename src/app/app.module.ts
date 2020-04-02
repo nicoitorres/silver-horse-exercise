@@ -12,6 +12,7 @@ import { MapComponent } from './components/map/map.component';
 import { GenericModalComponent } from './components/generic-modal/generic-modal.component';
 import { DeleteUserModalComponent } from './components/delete-user-modal/delete-user-modal.component';
 import { CommonModule } from '@angular/common';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CommonModule } from '@angular/common';
     UserBasicComponent,
     MapComponent,
     GenericModalComponent,
-    DeleteUserModalComponent
+    DeleteUserModalComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

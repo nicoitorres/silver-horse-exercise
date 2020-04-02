@@ -5,7 +5,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +21,7 @@ const routes: Routes = [
     component: NotfoundComponent,
     data: {title: "Not Found"}
   }
+
 ]
 
 @NgModule({
