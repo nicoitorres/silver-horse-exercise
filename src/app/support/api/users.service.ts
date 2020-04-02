@@ -10,7 +10,7 @@ export class UsersService {
 
   constructor(private apiSerivce: JsonplaceholderService) {
     this.getAllUsers();
-   }
+  }
 
   private allUsersSource = new BehaviorSubject([]);
   allUsers = this.allUsersSource.asObservable();
@@ -18,13 +18,21 @@ export class UsersService {
   getUser(userId: number): Observable<User> {
     return this.apiSerivce.getUser(userId);
   }
-  deleteUser(userId:number): Observable<any>{
+  deleteUser(userId: number): Observable<any> {
     return this.apiSerivce.deleteUser(userId);
   }
-  getAllUsers():void{
-    this.apiSerivce.getAllUsers().subscribe(resp=>this.allUsersSource.next(resp));
+  getAllUsers(): void {
+    this.apiSerivce.getAllUsers().subscribe(resp => this.allUsersSource.next(resp));
   }
-  updateUser(userId:number, userPropsToUpdate:User): Observable<User>{
+  updateUser(userId: number, userPropsToUpdate: User): Observable<User> {
     return this.apiSerivce.updateUser(userId, userPropsToUpdate);
+  }
+  removeUserFromArray(user: User) {
+    let allUsers = this.allUsersSource.value;
+    allUsers = allUsers.filter((result) => {
+      if (result.id != user.id)
+        return result
+    });
+    this.allUsersSource.next(allUsers);
   }
 }

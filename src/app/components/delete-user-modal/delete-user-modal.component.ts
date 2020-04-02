@@ -22,11 +22,13 @@ export class DeleteUserModalComponent implements OnInit {
     this.loading = true;
     this.userService.deleteUser(this.user.id).subscribe(resp => {
       this.loading = false;
+      this.activeModal.dismiss();
       const deletedModal = this.modal.open(GenericModalComponent, { windowClass: 'modal-md', backdrop: 'static' }) //Open the message modal
       deletedModal.componentInstance.title = "User Deleted";
       deletedModal.componentInstance.advanceBtnText = "Okay"
       deletedModal.componentInstance.closeBtnText = "";
       deletedModal.result.finally(() => {
+        this.userService.removeUserFromArray(this.user);
         this.router.navigateByUrl('/'); //Redirect to home page
       })
     })

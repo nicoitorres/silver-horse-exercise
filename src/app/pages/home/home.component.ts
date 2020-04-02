@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { User } from 'src/app/support/User';
 import { UsersService } from 'src/app/support/api/users.service';
 
@@ -9,11 +9,13 @@ import { UsersService } from 'src/app/support/api/users.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UsersService) { 
+  constructor(private userService: UsersService) {
   }
   allUsers: User[];
   ngOnInit(): void {
-    this.userService.allUsers.subscribe(resp=>this.allUsers = resp);
+    this.userService.allUsers.subscribe(resp => {
+      this.allUsers = resp;
+    });
   }
- 
+
 }
