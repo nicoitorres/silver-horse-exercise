@@ -12,11 +12,14 @@ describe('AddItemModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[ BrowserDynamicTestingModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [ AddItemModalComponent ],
-      providers:[NgbActiveModal]
+      imports: [BrowserDynamicTestingModule, HttpClientTestingModule, RouterTestingModule],
+      declarations: [AddItemModalComponent],
+      providers: [NgbActiveModal]
     })
-    .compileComponents();
+      .compileComponents().then(() => {
+        fixture = TestBed.createComponent(AddItemModalComponent);
+        component = fixture.componentInstance;
+      });
   }));
 
   beforeEach(() => {
@@ -27,5 +30,17 @@ describe('AddItemModalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create a post',async () => {
+    spyOn(component, 'addItem');
+
+    let button = fixture.debugElement.nativeElement.querySelector('#addItemBtn');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(component.addItem).toHaveBeenCalled();
+      expect(component.loading).toBe(false); //Should have set loading to false after finished
+    });
   });
 });

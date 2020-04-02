@@ -1,18 +1,20 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async, inject, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { JsonplaceholderService } from './jsonplaceholder.service';
 import { Observable } from 'rxjs';
 import { User } from '../support/User';
 import { Coordinates } from '../support/Coordinates';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpEvent, HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('JsonplaceholderService', () => {
- 
+
 
   let service: JsonplaceholderService;
- 
+  let injector: TestBed;
+
+  let httpMock: HttpTestingController;
   let user1dto: User = {
     id: 1,
     name: "Leanne Graham",
@@ -39,21 +41,35 @@ describe('JsonplaceholderService', () => {
   }
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:  [HttpClientTestingModule, RouterTestingModule
-      ],
+      imports: [HttpClientTestingModule, HttpClientModule, RouterTestingModule],
       providers: [JsonplaceholderService]
     });
+    injector = getTestBed();
     service = TestBed.inject(JsonplaceholderService);
+    httpMock = injector.get(HttpTestingController);
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
+
   });
-  
+  afterEach(() => {
+    httpMock.verify();
+  })
   it('should be created', () => {
     const service: JsonplaceholderService = TestBed.get(JsonplaceholderService);
 
     expect(service).toBeTruthy();
   });
-  it('should check the return value of getting a valid user', () => {
-    service.getUser(1).subscribe(result => {
-      expect(result).toBe(user1dto);
-    })
+
+
+  it('should return an Observable<User>', (done:DoneFn) => {
+    service.getUser(1).subscribe(users => {
+      expect(users).toEqual(user1dto);
+      done();
+    });
+    const req = httpMock.expectOne(`${service.apiUrl}users/1`);
+    expect(req.request.method).toBe("GET");
+    req.flush(user1dto);
   });
+
+
+
 });

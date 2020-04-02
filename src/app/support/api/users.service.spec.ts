@@ -12,8 +12,8 @@ describe('UsersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule, RouterTestingModule]
-  
+      imports: [HttpClientTestingModule, RouterTestingModule]
+
     }).compileComponents();
     injector = getTestBed();
     service = TestBed.inject(UsersService);
@@ -24,4 +24,12 @@ describe('UsersService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should get all users on creation', async () => {
+    spyOn(service, 'getAllUsers').and.callThrough();
+    service.allUsers.subscribe(resp=>{
+      expect(resp).not.toBe(null); //make sure the all users array has been initialised
+    })
+  });
+
 });

@@ -9,14 +9,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 describe('DeleteUserModalComponent', () => {
   let component: DeleteUserModalComponent;
   let fixture: ComponentFixture<DeleteUserModalComponent>;
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule, RouterTestingModule],
-      declarations: [ DeleteUserModalComponent ],
-      providers:[NgbActiveModal]
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [DeleteUserModalComponent],
+      providers: [NgbActiveModal]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,8 +24,18 @@ describe('DeleteUserModalComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call the delete user modal', async () => {
+    spyOn(component, 'deleteUser');
+    let button = fixture.debugElement.nativeElement.querySelector('#deleteUserBtn');
+    button.click();
+    fixture.whenStable().then(() => {
+      expect(component.deleteUser).toHaveBeenCalled();
+      expect(component.loading).toBe(false); //Should have set loading to false after finished
+    });
   });
 });

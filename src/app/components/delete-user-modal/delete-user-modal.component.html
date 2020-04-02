@@ -8,7 +8,7 @@
         <p>Are you sure you wish to delete this user?</p>
         <div class="row">
             <div class="col-6">
-                <button *ngIf="!loading" class="btn btn-danger" (click)="deleteUser()">Delete</button>
+                <button id="deleteUserBtn" *ngIf="!loading" class="btn btn-danger" (click)="deleteUser()">Delete</button>
                 <button *ngIf="loading" disabled class="btn btn-outline-danger"><i class="fa fa-refresh fa-spin"></i></button>
                 
             </div>

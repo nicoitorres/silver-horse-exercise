@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-6 my-3">
             <h5>Albums by {{user.name}}</h5>
-            <button class="btn-outline-info btn btn-block" *ngIf="!showAlbums" (click)="showAlbums = true">Load Albums</button>
+            <button class="btn-outline-info btn btn-block" *ngIf="!showAlbums" (click)="showAlbums = true" id="showAlbumButton">Load Albums</button>
             <app-user-posts [userId]="user.id" [type]="'albums'" *ngIf="showAlbums"></app-user-posts>
         </div>
 

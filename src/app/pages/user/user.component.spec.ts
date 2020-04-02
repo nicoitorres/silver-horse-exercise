@@ -15,7 +15,10 @@ describe('UserComponent', () => {
         RouterTestingModule.withRoutes([])],
       declarations: [ UserComponent ]
     })
-    .compileComponents();
+    .compileComponents().then(() => {
+      fixture = TestBed.createComponent(UserComponent);
+      component = fixture.componentInstance;
+    });
   }));
 
   beforeEach(() => {
@@ -27,4 +30,6 @@ describe('UserComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });
