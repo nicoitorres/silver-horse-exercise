@@ -12,8 +12,10 @@ export class MapComponent implements OnInit {
 
   constructor(public sanitise: DomSanitizer) { }
 
-  ngOnInit(): void {
+  mapUrl: any = '';
 
+  ngOnInit(): void {
+    this.mapUrl = this.getMapUrl();
   }
   getMapUrl(){
     return this.sanitise.bypassSecurityTrustResourceUrl(`https://maps.google.com/maps?q=${this.map?.lat},${this.map?.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`);

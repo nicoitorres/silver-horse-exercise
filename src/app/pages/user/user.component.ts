@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/support/User';
 import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/support/api/users.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { GenericModalComponent } from 'src/app/components/generic-modal/generic-modal.component';
+import { DeleteUserModalComponent } from 'src/app/components/delete-user-modal/delete-user-modal.component';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +14,7 @@ import { UsersService } from 'src/app/support/api/users.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private userService: UsersService, private route: ActivatedRoute) {
+  constructor(private userService: UsersService, private route: ActivatedRoute, private modal: NgbModal, private router: Router) {
     this.getUser();
   }
 
@@ -26,8 +29,10 @@ export class UserComponent implements OnInit {
   }
 
 
-  deleteUser(){
+  deleteUser() {
 
+    const deleteModal = this.modal.open(DeleteUserModalComponent, { windowClass: 'modal-md', backdrop: 'static', keyboard:false });
+    deleteModal.componentInstance.user = this.user;
   }
 
 }

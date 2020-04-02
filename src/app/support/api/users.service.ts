@@ -13,4 +13,7 @@ export class UsersService {
   getUser(userId: number): Observable<User> {
     return this.apiSerivce.getUser(userId);
   }
+  deleteUser(userId:number): Observable<any>{
+    return this.apiSerivce.deleteUser(userId);
+  }
 }

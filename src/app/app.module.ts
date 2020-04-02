@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { UserBasicComponent } from './components/user-basic/user-basic.component';
 import { MapComponent } from './components/map/map.component';
+import { GenericModalComponent } from './components/generic-modal/generic-modal.component';
+import { DeleteUserModalComponent } from './components/delete-user-modal/delete-user-modal.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,19 @@ import { MapComponent } from './components/map/map.component';
     UserComponent,
     NotfoundComponent,
     UserBasicComponent,
-    MapComponent
+    MapComponent,
+    GenericModalComponent,
+    DeleteUserModalComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [GenericModalComponent]
 })
 export class AppModule { }

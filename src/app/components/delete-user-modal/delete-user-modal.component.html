@@ -1,0 +1,21 @@
+<div class="modal-content">
+
+    <div class="modal-header">
+        <h2 class="modal-title" style="font-weight: 200">Delete {{user.name}}?</h2>
+
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you wish to delete this user?</p>
+        <div class="row">
+            <div class="col-6">
+                <button *ngIf="!loading" class="btn btn-danger" (click)="deleteUser()">Delete</button>
+                <button *ngIf="loading" disabled class="btn btn-outline-danger"><i class="fa fa-refresh fa-spin"></i></button>
+                
+            </div>
+            <div class="col-6">
+                <button class="btn btn-dark" [disabled]="loading" (click)="activeModal.dismiss()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>
