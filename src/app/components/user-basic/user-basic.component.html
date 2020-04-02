@@ -1,4 +1,4 @@
-<div class="row user-basic">
+<div *ngIf="user" class="row user-basic">
     <div class="col-md-4">
         <label for="nameBox">Name</label><input id="nameBox" class="form-control" type="text" value="{{user?.name}}"
             disabled>

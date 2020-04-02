@@ -1,3 +1,5 @@
+import { Coordinates } from './Coordinates';
+
 export class User {
     id: number;
     name: string;
@@ -14,7 +16,7 @@ export class User {
     website: string;
     company: {
         name: string;
-        cathPhrase: string;
+        catchPhrase: string;
         bs: string
     }
 }

@@ -17,6 +17,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserPostsComponent } from './components/user-posts/user-posts.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AddItemModalComponent } from './components/add-item-modal/add-item-modal.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,8 @@ import { AddItemModalComponent } from './components/add-item-modal/add-item-moda
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    RouterModule.forRoot([])
   ],
   providers: [Title],
   bootstrap: [AppComponent],

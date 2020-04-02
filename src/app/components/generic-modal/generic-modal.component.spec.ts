@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GenericModalComponent } from './generic-modal.component';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 describe('GenericModalComponent', () => {
   let component: GenericModalComponent;
@@ -8,7 +10,9 @@ describe('GenericModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericModalComponent ]
+      imports:[BrowserDynamicTestingModule],
+      declarations: [ GenericModalComponent ],
+      providers:[NgbModal, NgbActiveModal]
     })
     .compileComponents();
   }));
