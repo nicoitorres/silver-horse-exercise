@@ -16,4 +16,7 @@ export class UsersService {
   deleteUser(userId:number): Observable<any>{
     return this.apiSerivce.deleteUser(userId);
   }
+  getAllUsers(): Observable<User[]>{
+    return this.apiSerivce.getAllUsers();
+  }
 }
