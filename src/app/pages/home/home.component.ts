@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +7,7 @@ import { JsonplaceholderService } from 'src/app/services/jsonplaceholder.service
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private apiService: JsonplaceholderService) { }
+  constructor() { }
 
   ngOnInit(): void {
    

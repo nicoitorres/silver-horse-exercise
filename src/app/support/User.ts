@@ -8,10 +8,7 @@ export class User {
         suite: string;
         city: string;
         zipcode: string
-        geo: {
-            lat: string;
-            long: string;
-        }
+        geo: Coordinates;
     };
     phone: string;
     website: string;

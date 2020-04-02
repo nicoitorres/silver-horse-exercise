@@ -7,13 +7,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { UserBasicComponent } from './components/user-basic/user-basic.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    UserBasicComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

@@ -1,2 +1,30 @@
-<p>user works!</p>
-{{user?.name}}
+<div *ngIf="user" class="user-container">
+
+    <div style="text-align: center;">
+        <a class="delete-user" (click)="deleteUser()">Delete User</a>
+    </div>
+
+    <app-user-basic [user]="user"></app-user-basic>
+    <h4 class="mt-2">Location</h4>
+    <div class="row">
+        <div class="my-2 col-md-8">
+            <h5>Map</h5>
+            <app-map [map]="user.address.geo"></app-map>
+
+        </div>
+        <div class="my-2 col-md-4">
+            <h5>Address</h5>
+            <ul>
+                <li>
+                    {{user.address.street}}
+                </li>
+                <li>
+                    {{user.address.city}}
+                </li>
+                <li>
+                    {{user.address.zipcode}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
