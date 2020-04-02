@@ -45,6 +45,6 @@ import { AddItemModalComponent } from './components/add-item-modal/add-item-moda
   ],
   providers: [Title],
   bootstrap: [AppComponent],
-  entryComponents: [GenericModalComponent]
+  entryComponents: [GenericModalComponent, AddItemModalComponent]
 })
 export class AppModule { }

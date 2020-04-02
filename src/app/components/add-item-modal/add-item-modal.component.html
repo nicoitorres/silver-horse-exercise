@@ -4,14 +4,24 @@
         <h2 class="modal-title" style="font-weight: 200">New {{type}}</h2>
 
     </div>
-    <div class="modal-body">
+    <div class="modal-body" style="text-align: center;">
         
+        <div class="form-group form-inline mx-auto">
+            <label for="titleInput">Title</label>
+            <input type="text" [(ngModel)]="itemTitle" class="ml-2 form-control" id="titleInput" maxlength="30">
+        </div>
+        <div *ngIf="type==='post'" class="form-group form-inline mx-auto">
+            <label for="titleInput">Body</label>
+            <input type="text" [(ngModel)]="itemBody" class="ml-2 form-control" id="bodyInput" maxlength="30">
+        </div>
         <div class="row">
             <div class="col-6">
-                <button class="btn btn-success" (click)="modal.close()">Add</button>
+                <button class="btn btn-success" *ngIf="!loading" (click)="addItem()">Add</button>
+                <button class="btn btn-primary" *ngIf="loading"><i class="fa fa-refresh fa-spin"></i></button>
+
             </div>
             <div class="col-6">
-                <button class="btn btn-dark" (click)="modal.dismiss()">Cancel</button>
+                <button class="btn btn-dark" [disabled]="loading" (click)="modal.dismiss()">Cancel</button>
             </div>
         </div>
     </div>

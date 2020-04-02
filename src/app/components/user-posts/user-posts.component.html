@@ -3,7 +3,7 @@
 </div>
 <div *ngIf="!loading">
     <div *ngIf="userPosts">
-        <button class="btn btn-success btn-block">Add Post</button>
+        <button class="btn btn-success btn-block" (click)="addItem('post')">Add Post</button>
         <div class="scrollable-container">
             <div *ngFor="let post of userPosts" class="my-1 item-container">
                 <h5>{{post.title}}</h5>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div *ngIf="userAlbums">
-        <button class="btn btn-success btn-block">Add Album</button>
+        <button class="btn btn-success btn-block" (click)="addItem('album')">Add Album</button>
         <div class="scrollable-container">
             <div *ngFor="let album of userAlbums" class="my-1 item-container">
                 <h5>{{album.title}}</h5>

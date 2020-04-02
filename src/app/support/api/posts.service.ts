@@ -14,4 +14,7 @@ export class PostsService {
   getUserPosts(userId:number):Observable<Post[]> {
     return this.apiService.getUserPosts(userId);
   }
+  newPost(postDto:Post):Observable<Post>{
+    return this.apiService.newPost(postDto);
+  }
 }

@@ -13,4 +13,7 @@ export class AlbumsService {
   getUserAlbums(userId:number):Observable<Album[]> {
     return this.apiService.getUserAlbums(userId);
   }
+  newAlbum(albumDto:Album): Observable<Album>{
+    return this.apiService.newAlbum(albumDto);
+  }
 }

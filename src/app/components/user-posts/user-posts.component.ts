@@ -3,6 +3,8 @@ import { AlbumsService } from 'src/app/support/api/albums.service';
 import { PostsService } from 'src/app/support/api/posts.service';
 import { Post } from 'src/app/support/Post';
 import { Album } from 'src/app/support/Album';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddItemModalComponent } from '../add-item-modal/add-item-modal.component';
 
 @Component({
   selector: 'app-user-posts',
@@ -11,7 +13,7 @@ import { Album } from 'src/app/support/Album';
 })
 export class UserPostsComponent implements OnInit {
 
-  constructor(private albumService: AlbumsService, private postService: PostsService) { }
+  constructor(private albumService: AlbumsService, private postService: PostsService, private modalService: NgbModal) { }
 
   @Input() public userId: number;
   @Input() public type: string;
@@ -45,6 +47,18 @@ export class UserPostsComponent implements OnInit {
       this.loading = false;
 
     });
+  }
+
+  addItem(type: string) {
+    const addItemModal = this.modalService.open(AddItemModalComponent, { windowClass: 'modal-md', backdrop: 'static', keyboard: false });
+    addItemModal.componentInstance.type = type;
+    addItemModal.componentInstance.userId = this.userId;
+    addItemModal.result.then(resp => {
+      if (type === 'post')
+        this.userPosts.unshift(resp);
+      else if (type === 'album')
+        this.userAlbums.unshift(resp);
+    })
   }
 
 }
